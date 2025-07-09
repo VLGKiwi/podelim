@@ -48,15 +48,18 @@
 ### Структура проекта
 ```
 .
-├── mobile/			  # Мобила
-│   ├── .../
-│   ├── .../
-├── backend/			# Бек-енд
-│   ├── .../
-│   ├── .../
-├── frontend/			# Фронт-енд
-│   ├── .../
-│   ├── .../
+├── apps/
+│   ├── backend/      <-- Здесь будет жить Java-проект
+│   ├── mobile/       <-- Здесь будет жить Kotlin-проект
+│   └── web/          <-- Здесь будет жить React/Next.js проект
+│
+├── packages/
+│   ├── eslint-config-custom/  <-- Общая конфигурация ESLint
+│   └── tsconfig/              <-- Общая конфигурация TypeScript
+│
+├── .gitignore
+├── package.json      <-- Главный package.json монорепозитория
+├── turbo.json        <-- Конфигурация Turborepo
 └── README.md
 ```
 
