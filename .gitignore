@@ -1,5 +1,5 @@
 # backend
-/apps/backend-app/podelim/target/
+/apps/backend-app/target/
 .vscode/
 
 /apps/backend-app/podelim/target/*.class
