@@ -1,5 +1,8 @@
 # backend
+./apps/backend-app/podelim/target/
+.vscode/
 
+./apps/backend-app/podelim/target/*.class
 
 # frontend
 
