@@ -1,10 +1,51 @@
 # backend
-./apps/backend-app/podelim/target/
+/apps/backend-app/podelim/target/
 .vscode/
 
-./apps/backend-app/podelim/target/*.class
+/apps/backend-app/podelim/target/*.class
+
 
 # frontend
+# dependencies
+/apps/frontend-app/node_modules
+/apps/frontend-app/.pnp
+/apps/frontend-app/.pnp.*
+/apps/frontend-app/.yarn/*
+!/apps/frontend-app/.yarn/patches
+!/apps/frontend-app/.yarn/plugins
+!/apps/frontend-app/.yarn/releases
+!/apps/frontend-app/.yarn/versions
+/apps/frontend-app/README.md
+
+# testing
+/apps/frontend-app/coverage
+
+# next.js
+/apps/frontend-app/.next/
+/apps/frontend-app/out/
+
+# production
+/apps/frontend-app/build
+
+# misc
+/apps/frontend-app/.DS_Store
+/apps/frontend-app/*.pem
+
+# debug
+/apps/frontend-app/npm-debug.log*
+/apps/frontend-app/yarn-debug.log*
+/apps/frontend-app/yarn-error.log*
+/apps/frontend-app/.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+/apps/frontend-app/.env*
+
+# vercel
+/apps/frontend-app/.vercel
+
+# typescript
+/apps/frontend-app/*.tsbuildinfo
+/apps/frontend-app/next-env.d.ts
 
 
 # mobile
