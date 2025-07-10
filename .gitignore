@@ -8,4 +8,46 @@
 
 
 # mobile
-.idea
+.DS_Store
+/.idea/
+*.log
+/apps/mobile-app/build/
+/apps/mobile-app/app/build/
+
+# Локальные настройки (путь к SDK и т.д.)
+/apps/mobile-app/local.properties
+
+# Кэш Gradle
+/apps/mobile-app/.gradle/
+
+# Файлы IDE (специфичные для проекта Android Studio)
+/apps/mobile-app/.idea/
+/apps/mobile-app/*.iml
+/apps/mobile-app/app/*.iml
+
+# Скомпилированные приложения
+*.apk
+*.aab
+*.ap_
+*.apks
+
+# Промежуточные файлы сборки
+*.dex
+*.class
+
+# Файлы хранилища ключей (не должны быть в репозитории)
+*.jks
+*.keystore
+
+# Папки для нативной сборки
+/apps/mobile-app/.externalNativeBuild/
+/apps/mobile-app/.cxx/
+
+# Файлы сервисов Google (если они не должны быть в репозитории)
+/apps/mobile-app/app/google-services.json
+
+# Папка для скриншотов из Android Studio
+/apps/mobile-app/captures/
+
+# Временные файлы редактора навигации
+/apps/mobile-app/.navigation/
