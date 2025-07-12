@@ -73,10 +73,10 @@ dependencies {
 
     // Networking
     implementation(libs.retrofit)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
+    implementation (libs.converter.kotlinx.serialization)
 
     // Room
     implementation(libs.androidx.room.runtime)

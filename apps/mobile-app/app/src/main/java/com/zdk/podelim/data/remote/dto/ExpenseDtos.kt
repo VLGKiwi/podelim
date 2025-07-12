@@ -1,14 +1,17 @@
 package com.zdk.podelim.data.remote.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// Used for responses in GET, POST, PUT expense requests
+// Used for responses in GET, POST, and PUT expense requests
 @Serializable
 data class ExpenseDto(
     val id: Int,
     val description: String,
     val amount: Double,
+    @SerialName("payerId")
     val payerId: Int,
+    @SerialName("consumerIds")
     val consumerIds: List<Int>,
 )
 
@@ -17,6 +20,7 @@ data class ExpenseDto(
 data class CreateExpenseRequest(
     val description: String,
     val amount: Double,
+    @SerialName("payerId")
     val payerId: Int,
 )
 
@@ -25,11 +29,6 @@ data class CreateExpenseRequest(
 data class UpdateExpenseRequest(
     val description: String,
     val amount: Double,
+    @SerialName("payerId")
     val payerId: Int,
-)
-
-// PUT /api/events/{eventId}/expenses/{expenseId}/consumers
-@Serializable
-data class UpdateExpenseConsumersRequest(
-    val participantIds: List<Int>,
 )

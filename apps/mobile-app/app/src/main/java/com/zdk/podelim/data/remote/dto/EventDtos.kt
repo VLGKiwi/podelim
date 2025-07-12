@@ -1,5 +1,6 @@
 package com.zdk.podelim.data.remote.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 // POST /api/events
@@ -12,14 +13,16 @@ data class CreateEventRequest(
 // POST /api/events
 @Serializable
 data class EventCreationResponse(
-    val eventId: String,
+    @SerialName("eventId")
+    val id: String,
 )
 
 // Represents a single event in the list from GET /api/events
 // Also used as a response for PUT /api/events/{eventId}
 @Serializable
 data class EventSummaryDto(
-    val eventId: String,
+    @SerialName("eventId")
+    val id: String,
     val name: String,
     val date: String,
 )
@@ -27,7 +30,8 @@ data class EventSummaryDto(
 // GET /api/events/{eventId}
 @Serializable
 data class EventDetailDto(
-    val eventId: String,
+    @SerialName("eventId")
+    val id: String,
     val name: String,
     val date: String,
     val participants: List<ParticipantDto>,
