@@ -5,80 +5,88 @@ import java.util.UUID;
 
 /**
  * domain entity of expense
- * 
- * Invariant: amount >= 0
+ *
+ * <p>Invariant: amount >= 0
  */
 public class Expense {
-    private final long id;
-    private long payerId;
-    private final UUID eventId;
-    private String description;
-    /**
-     * amount field can't be less than 0
-     */
-    private int amount;
+  private final long id;
+  private long payerId;
+  private final UUID eventId;
+  private String description;
 
-    public Expense(long id, long payerId, UUID eventId, String description, int amount) {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(eventId);
-        Objects.requireNonNull(amount);
-        if (amount < 0) throw new IllegalArgumentException("amount can't be less than 0");
-        
-        this.id = id;
-        this.payerId = payerId;
-        this.eventId = eventId;
-        this.description = description;
-        this.amount = amount;
-    }
+  /** amount field can't be less than 0 */
+  private int amount;
 
-    public long getId() {
-        return id;
-    }
+  public Expense(long id, long payerId, UUID eventId, String description, int amount) {
+    Objects.requireNonNull(id);
+    Objects.requireNonNull(eventId);
+    Objects.requireNonNull(amount);
+    if (amount < 0) throw new IllegalArgumentException("amount can't be less than 0");
 
-    public long getPayerId() {
-        return payerId;
-    }
+    this.id = id;
+    this.payerId = payerId;
+    this.eventId = eventId;
+    this.description = description;
+    this.amount = amount;
+  }
 
-    public void setPayerId(long payerId) {
-        this.payerId = payerId;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public UUID getEventId() {
-        return eventId;
-    }
+  public long getPayerId() {
+    return payerId;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setPayerId(long payerId) {
+    this.payerId = payerId;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public UUID getEventId() {
+    return eventId;
+  }
 
-    public int getAmount() {
-        return amount;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    @Override
-    public String toString() {
-        return "Expense [id=" + id + ", payerId=" + payerId + ", eventId=" + eventId + ", description=" + description
-                + ", amount=" + amount + "]";
-    }
+  public int getAmount() {
+    return amount;
+  }
 
-        @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+  public void setAmount(int amount) {
+    this.amount = amount;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Expense expense = (Expense) obj;
-        return Objects.equals(id, expense.id);
-    }
+  @Override
+  public String toString() {
+    return "Expense [id="
+        + id
+        + ", payerId="
+        + payerId
+        + ", eventId="
+        + eventId
+        + ", description="
+        + description
+        + ", amount="
+        + amount
+        + "]";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Expense expense = (Expense) obj;
+    return Objects.equals(id, expense.id);
+  }
 }
