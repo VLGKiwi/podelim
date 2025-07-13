@@ -4,71 +4,81 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-/**
- * domain entity event
- * @throws IllegalArgumentException if expiresAt before createdAt
- */
+/** domain entity event */
 public class Event {
-    private final UUID id;
-    private String name;
-    private final LocalDateTime createdAt;
-    private LocalDateTime expiresAt;
+  private final UUID id;
+  private String name;
+  private final LocalDateTime createdAt;
+  private LocalDateTime expiresAt;
 
-    public Event(UUID id, String name, LocalDateTime createdAt, LocalDateTime expiresAt) {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(createdAt);
-        Objects.requireNonNull(expiresAt);
-        if (expiresAt.isBefore(createdAt)) throw new IllegalArgumentException("expiresAt cant't be before createdAt");
-        
-        this.id = id;
-        this.name = name;
-        this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
-    }
+  /**
+   * @throws IllegalArgumentException if expiresAt before createdAt
+   * @param id
+   * @param name
+   * @param createdAt
+   * @param expiresAt
+   */
+  public Event(UUID id, String name, LocalDateTime createdAt, LocalDateTime expiresAt) {
+    Objects.requireNonNull(id);
+    Objects.requireNonNull(name);
+    Objects.requireNonNull(createdAt);
+    Objects.requireNonNull(expiresAt);
+    if (expiresAt.isBefore(createdAt))
+      throw new IllegalArgumentException("expiresAt cant't be before createdAt");
 
-    public UUID getId() {
-        return id;
-    }
+    this.id = id;
+    this.name = name;
+    this.createdAt = createdAt;
+    this.expiresAt = expiresAt;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public UUID getId() {
+    return id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public LocalDateTime getExpiresAt() {
-        return expiresAt;
-    }
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 
-    public void setExpiresAt(LocalDateTime expiresAt) {
-        this.expiresAt = expiresAt;
-    }
+  public LocalDateTime getExpiresAt() {
+    return expiresAt;
+  }
 
-    @Override
-    public String toString() {
-        return "Event [id=" + id + ", name=" + name + ", createdAt=" + createdAt + ", expiresAt=" + expiresAt + "]";
-    }
+  public void setExpiresAt(LocalDateTime expiresAt) {
+    this.expiresAt = expiresAt;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+  @Override
+  public String toString() {
+    return "Event [id="
+        + id
+        + ", name="
+        + name
+        + ", createdAt="
+        + createdAt
+        + ", expiresAt="
+        + expiresAt
+        + "]";
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Event event = (Event) obj;
-        return Objects.equals(id, event.id);
-    }
-    
-    
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
+  }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Event event = (Event) obj;
+    return Objects.equals(id, event.id);
+  }
 }
