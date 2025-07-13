@@ -1,14 +1,16 @@
 package com.zdk.podelim.internal.domain.entities;
 
-import java.util.Objects;
-
 public class ExpenseConsumer {
   private long participantId;
   private long expenseId;
 
+  /**
+   * @throws IllegalArgumentException if participantId or expenseId is negative.
+   * @param participantId
+   * @param expenseId
+   */
   public ExpenseConsumer(long participantId, long expenseId) {
-    Objects.requireNonNull(participantId);
-    Objects.requireNonNull(expenseId);
+    if (participantId < 0 || expenseId < 0) throw new IllegalArgumentException("IDs must be positive");
 
     this.participantId = participantId;
     this.expenseId = expenseId;
@@ -19,6 +21,7 @@ public class ExpenseConsumer {
   }
 
   public void setParticipantId(long participantId) {
+    if (participantId < 0) throw new IllegalArgumentException("IDs must be positive"); 
     this.participantId = participantId;
   }
 
@@ -27,6 +30,7 @@ public class ExpenseConsumer {
   }
 
   public void setExpenseId(long expenseId) {
+    if (expenseId < 0) throw new IllegalArgumentException("IDs must be positive"); 
     this.expenseId = expenseId;
   }
 
@@ -34,4 +38,6 @@ public class ExpenseConsumer {
   public String toString() {
     return "ExpenseConsumer [participantId=" + participantId + ", expenseId=" + expenseId + "]";
   }
+
+  // TODO: create equals and hashCode
 }
