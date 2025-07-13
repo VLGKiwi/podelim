@@ -1,5 +1,6 @@
 package com.zdk.podelim.internal.domain.entities;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,13 +16,13 @@ public class Expense {
   private String description;
 
   /** amount field can't be less than 0 */
-  private int amount;
+  private BigDecimal amount;
 
-  public Expense(long id, long payerId, UUID eventId, String description, int amount) {
+  public Expense(long id, long payerId, UUID eventId, String description, BigDecimal amount) {
     Objects.requireNonNull(id);
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(amount);
-    if (amount < 0) throw new IllegalArgumentException("amount can't be less than 0");
+    if (amount.compareTo(new BigDecimal(0)) == -1) throw new IllegalArgumentException("amount can't be less than 0");
 
     this.id = id;
     this.payerId = payerId;
@@ -54,11 +55,12 @@ public class Expense {
     this.description = description;
   }
 
-  public int getAmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 
-  public void setAmount(int amount) {
+  public void setAmount(BigDecimal amount) {
+    if (amount.compareTo(new BigDecimal(0)) == -1) throw new IllegalArgumentException("amount can't be less than 0");
     this.amount = amount;
   }
 
