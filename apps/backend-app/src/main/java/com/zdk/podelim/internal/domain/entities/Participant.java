@@ -3,7 +3,9 @@ package com.zdk.podelim.internal.domain.entities;
 import java.util.Objects;
 import java.util.UUID;
 
-/** domain entity participant */
+/** domain entity participant 
+ * Invariant: name != null, name != "" or "   "
+*/
 public class Participant {
   private final UUID eventId;
   private final long id;
@@ -12,10 +14,19 @@ public class Participant {
   /** userId field can be null if user is temporary */
   private final UUID userId;
 
+
+  /**
+   * @throws IllegalArgumentException if name is empty
+   * @param eventId
+   * @param id
+   * @param name
+   * @param userId
+   */
   public Participant(UUID eventId, int id, String name, UUID userId) {
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(id);
     Objects.requireNonNull(name);
+    if (name.isBlank()) throw new IllegalArgumentException("name can't be empty");
 
     this.eventId = eventId;
     this.id = id;
