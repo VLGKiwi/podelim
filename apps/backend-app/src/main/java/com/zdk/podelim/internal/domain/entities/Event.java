@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-/** domain entity event */
+/** domain entity event 
+ * Invariant: name != null, name != "" or "   "
+ * Invariant: expiresAt >= createdAt
+*/
 public class Event {
   private final UUID id;
   private String name;
@@ -25,7 +28,7 @@ public class Event {
     Objects.requireNonNull(expiresAt);
     if (expiresAt.isBefore(createdAt))
       throw new IllegalArgumentException("expiresAt cant't be before createdAt");
-
+    if (name.isBlank()) throw new IllegalArgumentException("name can't be empty");
     this.id = id;
     this.name = name;
     this.createdAt = createdAt;
