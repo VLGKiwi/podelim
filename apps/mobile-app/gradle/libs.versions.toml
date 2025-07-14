@@ -15,7 +15,6 @@ navigationCompose = "2.9.1"
 navigationTesting = "2.9.1"
 okhttp = "5.1.0"
 retrofit = "3.0.0"
-retrofit2KotlinxSerializationConverter = "1.0.0"
 roomKtx = "2.7.2"
 
 [libraries]

@@ -1,6 +1,5 @@
 package com.zdk.podelim.di
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.zdk.podelim.data.remote.ApiService
 import com.zdk.podelim.data.repository.EventRepository
 import com.zdk.podelim.data.repository.MockEventRepository
@@ -11,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -27,13 +27,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit) : ApiService {
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideEventRepository(apiService: ApiService) : EventRepository {
+    fun provideEventRepository(apiService: ApiService): EventRepository {
         return MockEventRepository()
 
         //return EventRepositoryImpl(apiService)
