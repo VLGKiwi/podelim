@@ -4,10 +4,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-/** domain entity event 
- * Invariant: name != null, name != "" or "   "
- * Invariant: expiresAt >= createdAt
-*/
+/**
+ * domain entity event Invariant: name != null, name != "" or " " Invariant: expiresAt >= createdAt
+ */
 public class Event {
   private final UUID id;
   private String name;

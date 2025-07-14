@@ -22,7 +22,8 @@ public class Expense {
     Objects.requireNonNull(id);
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(amount);
-    if (amount.compareTo(new BigDecimal(0)) == -1) throw new IllegalArgumentException("amount can't be less than 0");
+    if (amount.compareTo(new BigDecimal(0)) == -1)
+      throw new IllegalArgumentException("amount can't be less than 0");
 
     this.id = id;
     this.payerId = payerId;
@@ -60,7 +61,8 @@ public class Expense {
   }
 
   public void setAmount(BigDecimal amount) {
-    if (amount.compareTo(new BigDecimal(0)) == -1) throw new IllegalArgumentException("amount can't be less than 0");
+    if (amount.compareTo(new BigDecimal(0)) == -1)
+      throw new IllegalArgumentException("amount can't be less than 0");
     this.amount = amount;
   }
 

@@ -10,7 +10,8 @@ public class ExpenseConsumer {
    * @param expenseId
    */
   public ExpenseConsumer(long participantId, long expenseId) {
-    if (participantId < 0 || expenseId < 0) throw new IllegalArgumentException("IDs must be positive");
+    if (participantId < 0 || expenseId < 0)
+      throw new IllegalArgumentException("IDs must be positive");
 
     this.participantId = participantId;
     this.expenseId = expenseId;
@@ -21,7 +22,7 @@ public class ExpenseConsumer {
   }
 
   public void setParticipantId(long participantId) {
-    if (participantId < 0) throw new IllegalArgumentException("IDs must be positive"); 
+    if (participantId < 0) throw new IllegalArgumentException("IDs must be positive");
     this.participantId = participantId;
   }
 
@@ -30,7 +31,7 @@ public class ExpenseConsumer {
   }
 
   public void setExpenseId(long expenseId) {
-    if (expenseId < 0) throw new IllegalArgumentException("IDs must be positive"); 
+    if (expenseId < 0) throw new IllegalArgumentException("IDs must be positive");
     this.expenseId = expenseId;
   }
 
