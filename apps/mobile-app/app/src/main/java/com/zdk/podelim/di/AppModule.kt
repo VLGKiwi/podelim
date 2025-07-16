@@ -1,8 +1,14 @@
 package com.zdk.podelim.di
 
 import com.zdk.podelim.data.remote.ApiService
+import com.zdk.podelim.data.repository.DebtRepository
 import com.zdk.podelim.data.repository.EventRepository
+import com.zdk.podelim.data.repository.ExpenseRepository
+import com.zdk.podelim.data.repository.MockDebtRepository
 import com.zdk.podelim.data.repository.MockEventRepository
+import com.zdk.podelim.data.repository.MockParticipantRepository
+import com.zdk.podelim.data.repository.MockExpenseRepository
+import com.zdk.podelim.data.repository.ParticipantRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,5 +43,26 @@ object AppModule {
         return MockEventRepository()
 
         //return EventRepositoryImpl(apiService)
+    }
+    @Provides
+    @Singleton
+    fun provideParticipantRepository(apiService: ApiService): ParticipantRepository {
+        return MockParticipantRepository()
+
+        //return ParticipantRepositoryImpl(apiService)
+    }
+    @Provides
+    @Singleton
+    fun provideExpenseRepository(apiService: ApiService): ExpenseRepository {
+        return MockExpenseRepository()
+
+        //return ExpenseRepositoryImpl(apiService)
+    }
+    @Provides
+    @Singleton
+    fun provideDebtRepository(apiService: ApiService): DebtRepository {
+        return MockDebtRepository()
+
+        //return DebtRepositoryImpl(apiService)
     }
 }

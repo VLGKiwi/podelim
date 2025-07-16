@@ -46,13 +46,16 @@ android {
     }
 }
 
+// Файл: app/build.gradle.kts
+
 dependencies {
 
     // Core & Lifecycle
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Compose - UI Toolkit
     implementation(platform(libs.androidx.compose.bom))
@@ -67,18 +70,19 @@ dependencies {
     // Hilt - Dependency Injection
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-    // Networking
+    // Networking (Retrofit + OkHttp)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
-    implementation (libs.converter.kotlinx.serialization)
+    implementation(libs.converter.kotlinx.serialization)
 
-    // Room
+    // Room (Local Database)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
