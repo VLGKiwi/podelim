@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
+import com.zdk.podelim.internal.domain.entities.exceptions.EntityExceptions;
+
 /**
  * domain entity of expense
  *
@@ -23,7 +25,7 @@ public class Expense {
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(amount);
     if (amount.compareTo(new BigDecimal(0)) == -1)
-      throw new IllegalArgumentException("amount can't be less than 0");
+      throw new IllegalArgumentException(EntityExceptions.EXPENSE_AMOUNT_CANNOT_BE_NEGATIVE);
 
     this.id = id;
     this.payerId = payerId;
@@ -62,7 +64,7 @@ public class Expense {
 
   public void setAmount(BigDecimal amount) {
     if (amount.compareTo(new BigDecimal(0)) == -1)
-      throw new IllegalArgumentException("amount can't be less than 0");
+      throw new IllegalArgumentException(EntityExceptions.EXPENSE_AMOUNT_CANNOT_BE_NEGATIVE);
     this.amount = amount;
   }
 

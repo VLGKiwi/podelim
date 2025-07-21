@@ -3,6 +3,8 @@ package com.zdk.podelim.internal.domain.entities;
 import java.util.Objects;
 import java.util.UUID;
 
+import com.zdk.podelim.internal.domain.entities.exceptions.EntityExceptions;
+
 /** domain entity participant Invariant: name != null, name != "" or " " */
 public class Participant {
   private final UUID eventId;
@@ -23,7 +25,7 @@ public class Participant {
     Objects.requireNonNull(eventId);
     Objects.requireNonNull(id);
     Objects.requireNonNull(name);
-    if (name.isBlank()) throw new IllegalArgumentException("name can't be empty");
+    if (name.isBlank()) throw new IllegalArgumentException(EntityExceptions.PARTICIPANT_NAME_CANNOT_BE_BLANK);
 
     this.eventId = eventId;
     this.id = id;
@@ -44,6 +46,7 @@ public class Participant {
   }
 
   public void setName(String name) {
+    if (name.isBlank()) throw new IllegalArgumentException(EntityExceptions.PARTICIPANT_NAME_CANNOT_BE_BLANK);
     this.name = name;
   }
 
