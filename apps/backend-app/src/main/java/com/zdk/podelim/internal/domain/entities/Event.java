@@ -1,8 +1,10 @@
 package com.zdk.podelim.internal.domain.entities;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
+
+import com.zdk.podelim.internal.domain.entities.exceptions.EntityExceptions;
 
 /**
  * domain entity event Invariant: name != null, name != "" or " " Invariant: expiresAt >= createdAt
@@ -10,8 +12,18 @@ import java.util.UUID;
 public class Event {
   private final UUID id;
   private String name;
-  private final LocalDateTime createdAt;
-  private LocalDateTime expiresAt;
+  private final ZonedDateTime createdAt;
+  private ZonedDateTime expiresAt;
+
+  /**
+   * it's minimum possible constructor
+   * @param id
+   * @param createdAt
+   */
+  public Event(UUID id, ZonedDateTime createdAt) {
+    this.id = Objects.requireNonNull(id);
+    this.createdAt = Objects.requireNonNull(createdAt);
+  }
 
   /**
    * @throws IllegalArgumentException if expiresAt before createdAt
@@ -20,14 +32,14 @@ public class Event {
    * @param createdAt
    * @param expiresAt
    */
-  public Event(UUID id, String name, LocalDateTime createdAt, LocalDateTime expiresAt) {
+  public Event(UUID id, String name, ZonedDateTime createdAt, ZonedDateTime expiresAt) {
     Objects.requireNonNull(id);
     Objects.requireNonNull(name);
     Objects.requireNonNull(createdAt);
     Objects.requireNonNull(expiresAt);
     if (expiresAt.isBefore(createdAt))
-      throw new IllegalArgumentException("expiresAt cant't be before createdAt");
-    if (name.isBlank()) throw new IllegalArgumentException("name can't be empty");
+      throw new IllegalArgumentException(EntityExceptions.EVENT_CANNOT_EXPIRES_BEFORE_CREATION);
+    if (name.isBlank()) throw new IllegalArgumentException(EntityExceptions.EVENT_NAME_CANNOT_BE_BLANK);
     this.id = id;
     this.name = name;
     this.createdAt = createdAt;
@@ -43,18 +55,20 @@ public class Event {
   }
 
   public void setName(String name) {
+    if (name.isBlank()) throw new IllegalArgumentException(EntityExceptions.EVENT_NAME_CANNOT_BE_BLANK);
     this.name = name;
   }
 
-  public LocalDateTime getCreatedAt() {
+  public ZonedDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public LocalDateTime getExpiresAt() {
+  public ZonedDateTime getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(LocalDateTime expiresAt) {
+  public void setExpiresAt(ZonedDateTime expiresAt) {
+    if (expiresAt.isBefore(createdAt)) throw new IllegalArgumentException(EntityExceptions.EVENT_CANNOT_EXPIRES_BEFORE_CREATION);
     this.expiresAt = expiresAt;
   }
 
