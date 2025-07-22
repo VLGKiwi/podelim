@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.zdk.podelim.ui.screens.eventDetail.EventDetailScreen
 import com.zdk.podelim.ui.screens.eventList.EventListScreen
 
 @Composable
@@ -30,8 +31,7 @@ fun AppNavigation() {
             })
         ) { backStackEntry ->
             val eventId = backStackEntry.arguments?.getString("eventId")
-
-
+            EventDetailScreen()
         }
 
     }
